@@ -1,4 +1,8 @@
-import pyrogram
+import time
+
+def run_script():
+    while True:
+        import pyrogram
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant, InviteHashExpired, UsernameNotOccupied
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -11,12 +15,12 @@ import json
 with open('config.json', 'r') as f: DATA = json.load(f)
 def getenv(var): return os.environ.get(var) or DATA.get(var, None)
 
-bot_token = getenv("TOKEN") 
-api_hash = getenv("HASH") 
-api_id = getenv("ID")
+bot_token = "6948474142:AAGa24_fj3PQtwj3WVMJOZqrU1oB-adgYYY"
+api_hash = "1fda88a5d1de46058a4791c78bce198e"
+api_id = "26075120"
 bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-ss = getenv("STRING")
+ss = "BQGTAMIANoB8_wTkyjJfABO2zj_Xi3fIB-jzQgtihPoiJr_sJbgaC7tVpTa1wThctMHjIs07IYPxNN-lkX1J32JJfXRIRu-wXhGew-au-bHKsPMDblhZF-2TsVncwhbY6ZVIySgSFIgviDd7hZVhVfc-jmyrfP_T-pcUn5haV-Agchq-klQLb96CDnp9eQ2dkN6ascEHfbfzYM-I7jCSFo_wrrmrBuelj-NUeF_ObPs1IGqG0gcacPlYNajt9Eztu7JaUSDVGllDwFFidqGOGObCpBJ2u8BIzfa6m6PMdjpSiDw59Kk5cmM4dTIAxsnWOUVOOyPD8JteOMdO0Mb4lb3sbWFuVwAAAAGGgvMwAA"
 if ss is not None:
 	acc = Client("myacc" ,api_id=api_id, api_hash=api_hash, session_string=ss)
 	acc.start()
@@ -280,3 +284,11 @@ __note that space in between doesn't matter__
 
 # infinty polling
 bot.run()
+
+        print("Running script...")
+        time.sleep(60)  # Sleep for 60 seconds
+
+start_time = time.time()
+
+while time.time() - start_time < 24 * 60 * 60:  # Run for 24 hours
+    run_script()
